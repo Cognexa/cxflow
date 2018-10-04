@@ -10,10 +10,9 @@ import logging
 import numpy as np
 
 import cxflow as cx
-from cxflow.constants import CXF_BUFFER_SLEEP
+from cxflow.constants import CXF_BUFFER_SLEEP, CXF_PREDICT_STREAM, CXF_DEFAULT_TRAIN_STREAM
 from cxflow.datasets import StreamWrapper
 from cxflow.hooks import StopAfter
-from cxflow.constants import CXF_PREDICT_STREAM
 from cxflow.types import EpochData, Batch, Stream, TimeProfile
 
 
@@ -125,6 +124,17 @@ class AllEmptyBatchDataset(SimpleDataset):
             yield {'input': [], 'target': []}
 
 
+class GeneratedStreamDataset(SimpleDataset):
+    """SimpleDataset with generated stream instead of train stream."""
+
+    def generated_stream(self) -> Stream:
+        for _ in range(self.iters):
+            yield {'input': np.ones(self.shape), 'target': np.zeros(self.shape)}
+
+    def train_stream(self) -> Stream:
+        assert False
+
+
 class EventRecordingHook(cx.AbstractHook):
     """EventRecordingHook records all the events and store their count and order."""
 
@@ -149,7 +159,8 @@ class EventRecordingHook(cx.AbstractHook):
         self.after_epoch_events.append(self._event_id)
         self._event_id += 1
 
-    def after_epoch_profile(self, epoch_id: int, profile: TimeProfile, extra_streams: Iterable[str]) -> None:
+    def after_epoch_profile(self, epoch_id: int, profile: TimeProfile, train_stream_name: str,
+                            extra_streams: Iterable[str]) -> None:
         self.after_epoch_profile_events.append(self._event_id)
         self._event_id += 1
 
@@ -190,7 +201,8 @@ class SaveProfileHook(cx.AbstractHook):
         super().__init__()
         self.profile = None
 
-    def after_epoch_profile(self, epoch_id: int, profile: TimeProfile, extra_streams: Iterable[str]) -> None:
+    def after_epoch_profile(self, epoch_id: int, profile: TimeProfile, train_stream_name: str,
+                            extra_streams: Iterable[str]) -> None:
         """Save the profile to self.profile."""
         self.profile = profile
 
@@ -281,7 +293,7 @@ class RecordingModel(TrainableModel):
 def create_main_loop(tmpdir):
 
     def _create_main_loop(epochs=1, extra_hooks=(), dataset=None, model_class=None, skip_zeroth_epoch=True,
-                         **main_loop_kwargs):
+                         train_stream_name=CXF_DEFAULT_TRAIN_STREAM, **main_loop_kwargs):
         """
         Create and return a model, dataset and mainloop.
 
@@ -292,6 +304,7 @@ def create_main_loop(tmpdir):
         :param dataset: dataset to be passed to the main loop, SimpleDataset() is created if None
         :param model_class: model class to be created and passed to the main loop, TrainableModel if None
         :param skip_zeroth_epoch: skip zeroth epoch flag passed to the main loop
+        :param train_stream_name: name of the training stream
         :return: a tuple of the created model, dataset and mainloop
         """
         hooks = list(extra_hooks) + [StopAfter(epochs=epochs)]
@@ -301,8 +314,8 @@ def create_main_loop(tmpdir):
             model_class = TrainableModel
         model = model_class(dataset=dataset, log_dir=tmpdir,  # pylint: disable=redefined-variable-type
                             io={'in': ['input', 'target'], 'out': ['output']})
-        mainloop = cx.MainLoop(model=model, dataset=dataset, hooks=hooks,
-                               skip_zeroth_epoch=skip_zeroth_epoch, **main_loop_kwargs)
+        mainloop = cx.MainLoop(model=model, dataset=dataset, hooks=hooks, skip_zeroth_epoch=skip_zeroth_epoch,
+                               train_stream_name=train_stream_name, **main_loop_kwargs)
         return model, dataset, mainloop
 
     return _create_main_loop
@@ -578,4 +591,32 @@ def test_stream_check(create_main_loop, caplog):
             ('root', logging.DEBUG, '0-th batch in stream `predict` has variable `input` of length 11 inconsistent '
                                     'with `main_loop.fixed_size` = 47'),
             ('root', logging.INFO, 'Prediction done\n\n')
+    ]
+
+
+def test_configurable_train_stream(create_main_loop, caplog):
+    caplog.set_level(logging.DEBUG)
+
+    caplog.clear()
+    _, _, mainloop = create_main_loop(dataset=EmptyStreamDataset(), train_stream_name='valid', on_empty_stream='warn')
+    mainloop.run_training()
+
+    assert caplog.record_tuples == [
+        ('root', logging.DEBUG, 'Training started'),
+        ('root', logging.INFO, 'Training epoch 1'),
+        ('root', logging.WARNING, 'Stream `valid` appears to be empty. Set `main_loop.on_empty_stream` to '
+                                  '`ignore` in order to suppress this warning.'),
+        ('root', logging.INFO, 'EpochStopperHook triggered'),
+        ('root', logging.INFO, 'Training terminated: Training terminated after epoch 1')
+    ]
+
+    caplog.clear()
+    _, _, mainloop = create_main_loop(dataset=GeneratedStreamDataset(), train_stream_name='generated')
+    mainloop.run_training()
+
+    assert caplog.record_tuples == [
+        ('root', logging.DEBUG, 'Training started'),
+        ('root', logging.INFO, 'Training epoch 1'),
+        ('root', logging.INFO, 'EpochStopperHook triggered'),
+        ('root', logging.INFO, 'Training terminated: Training terminated after epoch 1')
     ]

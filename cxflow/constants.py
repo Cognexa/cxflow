@@ -24,7 +24,7 @@ CXF_LOG_FILE = 'train.log'
 CXF_TRACE_FILE = 'trace.yaml'
 """Training trace filename."""
 
-CXF_TRAIN_STREAM = 'train'
+CXF_DEFAULT_TRAIN_STREAM = 'train'
 """Train stream name."""
 
 CXF_PREDICT_STREAM = 'predict'

@@ -5,11 +5,12 @@ import logging
 import numpy as np
 import tabulate
 
+import cxflow.datasets.base_dataset
 from cxflow.datasets.base_dataset import BaseDataset
 from cxflow.types import Stream
 
 
-class TestDataset(BaseDataset):
+class MockDataset(BaseDataset):
     """Create testing dataset."""
 
     def __init__(self, config_str: str):
@@ -68,9 +69,9 @@ class TestDataset(BaseDataset):
 
 def test_check_dataset(caplog):
     """Test logging of source names, dtypes and shapes of all the streams available in given dataset."""
-    empty_table_logging = tuple(map(lambda line: ('root', logging.INFO, line), TestDataset(None).make_table('empty')))
-    ragged_table_logging = tuple(map(lambda line: ('root', logging.INFO, line), TestDataset(None).make_table('ragged')))
-    regular_table_logging = tuple(map(lambda line: ('root', logging.INFO, line), TestDataset(None).make_table('regular')))
+    empty_table_logging = tuple(map(lambda line: ('root', logging.INFO, line), MockDataset(None).make_table('empty')))
+    ragged_table_logging = tuple(map(lambda line: ('root', logging.INFO, line), MockDataset(None).make_table('ragged')))
+    regular_table_logging = tuple(map(lambda line: ('root', logging.INFO, line), MockDataset(None).make_table('regular')))
 
     complete_logging = (
         (('root', logging.INFO, "Found 4 stream candidates: ['empty_stream', "
@@ -87,12 +88,12 @@ def test_check_dataset(caplog):
         + (('root', logging.WARNING, 'Exception was raised during checking stream '
             '`undefined_stream`, (stack trace is displayed only with --verbose flag)'),)
         + (('root', logging.DEBUG, 'Traceback (most recent call last):\n'
-            '  File "/root/cxflow/cxflow/datasets/base_dataset.py", line 61, in '
+           f'  File "{cxflow.datasets.base_dataset.__file__}", line 61, in '
             'stream_info\n'
             '    batch = next(iter(stream_fn()))\n'
             "TypeError: 'NoneType' object is not iterable\n"),)
     )
 
     caplog.set_level(logging.DEBUG)
-    TestDataset(None).stream_info()
+    MockDataset(None).stream_info()
     assert caplog.record_tuples == list(complete_logging)

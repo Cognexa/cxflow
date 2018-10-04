@@ -14,7 +14,7 @@ references:
     run:
       name: Install dependencies on Arch Linux.
       command: |
-        pacman -S --noconfirm python python-pip git base-devel curl
+        pacman -Syu --noconfirm python python-pip git base-devel curl
         pip install coveralls coverage
 
   install: &install
@@ -22,6 +22,7 @@ references:
       name: Install.
       command: |
         pip3 install .
+        pip3 install -r requirements-tests.txt
 
   test: &test
     run:
@@ -79,7 +80,7 @@ jobs:
 
   test_archlinux:
     docker:
-      - image: pritunl/archlinux:2018-01-13
+      - image: archimg/base-devel
     working_directory: ~/cxflow
     steps:
       - *arch_deps
@@ -89,7 +90,7 @@ jobs:
 
   coverage:
     docker:
-      - image: pritunl/archlinux:2018-01-13
+      - image: archimg/base-devel
     working_directory: ~/cxflow
     steps:
       - *arch_deps
@@ -110,7 +111,7 @@ jobs:
 
   deploy:
     docker:
-      - image: pritunl/archlinux:2018-01-13
+      - image: archimg/base-devel
     working_directory: ~/cxflow
     steps:
       - *arch_deps
@@ -147,6 +148,7 @@ workflows:
             - test_ubuntu_rolling
             - test_archlinux
             - generate_documentation
+            - coverage
 
   nightly-build:
     triggers:

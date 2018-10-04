@@ -6,6 +6,3 @@ ruamel.yaml>=0.13.14
 tabulate>=0.8.1
 babel>=2.5.1
 matplotlib>=2.1.1
-
-# testing
-pytest

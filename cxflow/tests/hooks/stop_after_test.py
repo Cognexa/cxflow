@@ -6,11 +6,11 @@ import time
 from cxflow.main_loop import MainLoop
 from cxflow.hooks.stop_after import StopAfter
 from cxflow.hooks.abstract_hook import TrainingTerminated
-from cxflow.constants import CXF_TRAIN_STREAM
+from cxflow.constants import CXF_DEFAULT_TRAIN_STREAM
 import pytest
 
 NOTRAIN_STREAM_NAME = 'valid'
-assert CXF_TRAIN_STREAM is not NOTRAIN_STREAM_NAME
+assert CXF_DEFAULT_TRAIN_STREAM != NOTRAIN_STREAM_NAME
 
 
 def test_no_conditions_raise():
@@ -41,13 +41,13 @@ def test_stop_after_iters():
         hook.after_batch(stream_name=NOTRAIN_STREAM_NAME, batch_data=None)
 
     for i in range(9):
-        hook.after_batch(stream_name=CXF_TRAIN_STREAM, batch_data=None)
+        hook.after_batch(stream_name=CXF_DEFAULT_TRAIN_STREAM, batch_data=None)
 
     hook.after_batch(stream_name=NOTRAIN_STREAM_NAME, batch_data=None)
 
     # Test hook does terminate the training correctly
     with pytest.raises(TrainingTerminated):
-        hook.after_batch(stream_name=CXF_TRAIN_STREAM, batch_data=None)
+        hook.after_batch(stream_name=CXF_DEFAULT_TRAIN_STREAM, batch_data=None)
 
 
 def test_stop_after_minutes():

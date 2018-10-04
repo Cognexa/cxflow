@@ -5,7 +5,6 @@
 Status](https://coveralls.io/repos/github/Cognexa/cxflow/badge.svg?branch=master)](https://coveralls.io/github/Cognexa/cxflow?branch=master)
 [![Development Status](https://img.shields.io/badge/status-CX%20Regular-brightgreen.svg?style=flat)]()
 [![MIT license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
-[![Master Developer](https://img.shields.io/badge/master-Petr%20Bělohlávek-lightgrey.svg?style=flat)]()
 
 This is an official repository of **cxflow** - a lightweight framework for machine learning with focus on modularization, re-usability and rapid experimenting.
 

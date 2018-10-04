@@ -2,6 +2,7 @@
 Module with profile hook test case (see :py:class:`cxflow.hooks.LogProfile`).
 """
 import logging
+from cxflow.constants import CXF_DEFAULT_TRAIN_STREAM
 from cxflow.hooks import LogProfile
 
 
@@ -45,7 +46,7 @@ class TestLogProfile:
         """Test KeyError raised on missing profile entries."""
         caplog.set_level(logging.INFO)
 
-        self._hook.after_epoch_profile(0, {}, [])
+        self._hook.after_epoch_profile(0, {}, CXF_DEFAULT_TRAIN_STREAM, [])
         assert caplog.record_tuples == [
             ('root', logging.INFO, '\tT read data:\t0.000000'),
             ('root', logging.INFO, '\tT train:\t0.000000'),
@@ -54,7 +55,7 @@ class TestLogProfile:
         ]
 
         caplog.clear()
-        self._hook.after_epoch_profile(0, {'some_contents': 1}, [])
+        self._hook.after_epoch_profile(0, {'some_contents': 1}, CXF_DEFAULT_TRAIN_STREAM, [])
         assert caplog.record_tuples == [
             ('root', logging.INFO, '\tT read data:\t0.000000'),
             ('root', logging.INFO, '\tT train:\t0.000000'),
@@ -66,7 +67,7 @@ class TestLogProfile:
         """Test profile handling with only train stream."""
         caplog.set_level(logging.INFO)
 
-        self._hook.after_epoch_profile(1, _TRAIN_ONLY_PROFILE, [])
+        self._hook.after_epoch_profile(1, _TRAIN_ONLY_PROFILE, CXF_DEFAULT_TRAIN_STREAM, [])
         assert caplog.record_tuples == [
             ('root', logging.INFO, '\tT read data:\t6.120000'),
             ('root', logging.INFO, '\tT train:\t21.900000'),
@@ -78,7 +79,7 @@ class TestLogProfile:
         """Test extra streams handling."""
         caplog.set_level(logging.INFO)
 
-        self._hook.after_epoch_profile(0, _TRAIN_ONLY_PROFILE, ['valid'])
+        self._hook.after_epoch_profile(0, _TRAIN_ONLY_PROFILE, CXF_DEFAULT_TRAIN_STREAM, ['valid'])
         assert caplog.record_tuples == [
             ('root', logging.INFO, '\tT read data:\t6.120000'),
             ('root', logging.INFO, '\tT train:\t21.900000'),
@@ -88,7 +89,7 @@ class TestLogProfile:
 
         # test additional entries being ignored if the extra stream was not specified
         caplog.clear()
-        self._hook.after_epoch_profile(1, _TRAIN_AND_VALID_PROFILE, [])
+        self._hook.after_epoch_profile(1, _TRAIN_AND_VALID_PROFILE, CXF_DEFAULT_TRAIN_STREAM, [])
         assert caplog.record_tuples == [
             ('root', logging.INFO, '\tT read data:\t6.001000'),
             ('root', logging.INFO, '\tT train:\t21.540000'),
@@ -98,7 +99,7 @@ class TestLogProfile:
 
         # test one additional stream
         caplog.clear()
-        self._hook.after_epoch_profile(1, _TRAIN_AND_VALID_PROFILE, ['valid'])
+        self._hook.after_epoch_profile(1, _TRAIN_AND_VALID_PROFILE, CXF_DEFAULT_TRAIN_STREAM, ['valid'])
         assert caplog.record_tuples == [
             ('root', logging.INFO, '\tT read data:\t20.001000'),
             ('root', logging.INFO, '\tT train:\t21.540000'),
@@ -108,7 +109,7 @@ class TestLogProfile:
 
         # test two additional streams
         caplog.clear()
-        self._hook.after_epoch_profile(1, _TRAIN_TEST_AND_VALID_PROFILE, ['valid', 'test'])
+        self._hook.after_epoch_profile(1, _TRAIN_TEST_AND_VALID_PROFILE, CXF_DEFAULT_TRAIN_STREAM, ['valid', 'test'])
         assert caplog.record_tuples == [
             ('root', logging.INFO, '\tT read data:\t23.322000'),
             ('root', logging.INFO, '\tT train:\t21.540000'),
