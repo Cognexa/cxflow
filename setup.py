@@ -33,7 +33,8 @@ setup(name='cxflow',
                 ],
       include_package_data=True,
       zip_safe=False,
-      test_suite='cxflow.tests',
+      setup_requires=['pytest-runner'],
+      tests_require=['pytest'],
       install_requires=[line for line in open('requirements.txt', 'r').readlines() if not line.startswith('#')],
       entry_points={
           'console_scripts': [

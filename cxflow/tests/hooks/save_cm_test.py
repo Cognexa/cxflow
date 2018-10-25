@@ -1,12 +1,15 @@
+"""
+Test case for :py:class:`cxflow.hooks.SaveConfusionMatrix hook.
+"""
 import os
 import matplotlib
+import pytest
 
-from cxflow.tests.test_core import CXTestCaseWithDir
 from cxflow.hooks.save_cm import SaveConfusionMatrix
 from ..main_loop_test import SimpleDataset
 
 
-class TestDataset(SimpleDataset):
+class MockDataset(SimpleDataset):
 
     @staticmethod
     def num_classes():
@@ -25,99 +28,71 @@ class TestDataset(SimpleDataset):
         return ['a']  # too few names
 
 
-class SaveConfusionMatrixTest(CXTestCaseWithDir):
-    """Test case for :py:class:`cxflow.hooks.SaveConfusionMatrix hook."""
+def run_hook(hook,
+             batch_data: dict = {'labels': [0, 1], 'predictions': [0, 1], 'masks': [1, 0]},
+             epoch_data: dict = {'train': {'accuracy': 1}}):
+    """
+    Run hook's methods `after_batch` and `after_epoch`
+    Returns modified epoch_data
+    """
+    hook.after_batch(stream_name='train', batch_data=batch_data)
+    hook.after_epoch(epoch_id=0, epoch_data=epoch_data)
+    return epoch_data
 
-    @staticmethod
-    def run_hook(hook,
-                 batch_data: dict={'labels': [0, 1], 'predictions': [0, 1], 'masks': [1, 0]},
-                 epoch_data: dict={'train': {'accuracy': 1}}):
-        """
-        Run hook's methods `after_batch` and `after_epoch`
-        Returns modified epoch_data
-        """
-        hook.after_batch(stream_name='train', batch_data=batch_data)
-        hook.after_epoch(epoch_id=0, epoch_data=epoch_data)
-        return epoch_data
 
-    def test_after_epoch(self):
+_WRONG_INPUTS = [({'labels_name': 'fake'}, KeyError),
+                 ({'predictions_name': 'fake'}, KeyError),
+                 ({'cmap': 'fake'}, ValueError),
+                 ({'figure_action': 'non_existing'}, ValueError),
+                 ({'classes_names': ['just_one']}, AssertionError),
+                 ({'classes_names_method_name': 'classes_names_bad'}, AssertionError),
+                 ({'num_classes_method_name': 'num_classes_bad', 'classes_names_method_name': 'not_existing'},
+                  AssertionError)]
 
-        # test wrong input parameters
-        with self.assertRaises(KeyError):
-            hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                       labels_name='fake')
-            SaveConfusionMatrixTest.run_hook(hook)
-        with self.assertRaises(KeyError):
-            hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                       predictions_name='fake')
-            SaveConfusionMatrixTest.run_hook(hook)
-        with self.assertRaises(ValueError):
-            hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                       cmap='fake')
-            SaveConfusionMatrixTest.run_hook(hook)
-        with self.assertRaises(ValueError):
-            hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                       figure_action='non_existing')
-        # test wrong number of classes' names
-        with self.assertRaises(AssertionError):
-            hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                       classes_names=['just_one'])
-            SaveConfusionMatrixTest.run_hook(hook)
-        with self.assertRaises(AssertionError):
-            hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                       classes_names_method_name='classes_names_bad')
-            SaveConfusionMatrixTest.run_hook(hook)
-        with self.assertRaises(AssertionError):
-            hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                       num_classes_method_name='num_classes_bad',
-                                       classes_names_method_name='not_existing')
-            SaveConfusionMatrixTest.run_hook(hook)
-        # test saving .png
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir)
-        SaveConfusionMatrixTest.run_hook(hook)
-        self.assertTrue(os.path.exists(os.path.join(self.tmpdir, 'confusion_matrix_epoch_0_train.png')))
-        # test storing .png
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir='',
-                                   figure_action='store')
-        epoch_data = SaveConfusionMatrixTest.run_hook(hook)
-        self.assertTupleEqual(tuple(epoch_data['train']['confusion_heatmap'].shape), (480, 640, 3))
 
-        # test changing figure size
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir='', figure_action='store',
-                                   figsize=(10, 15))
-        epoch_data = SaveConfusionMatrixTest.run_hook(hook)
-        dpi = matplotlib.rcParams['figure.dpi']
-        self.assertTupleEqual(tuple(epoch_data['train']['confusion_heatmap'].shape), (15*dpi, 10*dpi, 3))
+@pytest.mark.parametrize('params, error', _WRONG_INPUTS)
+def test_wrong_inputs(params, error, tmpdir):
+    with pytest.raises(error):
+        hook = SaveConfusionMatrix(dataset=MockDataset(), output_dir=tmpdir, **params)
+        run_hook(hook)
 
-        # test whether using mask_name does not crash
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                   classes_names=['first', 'second'], mask_name='masks')
-        SaveConfusionMatrixTest.run_hook(hook)
 
-        # test hook is working if each argument is OK
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                   classes_names=['first', 'second'])
-        SaveConfusionMatrixTest.run_hook(hook)
+_CORRECT_INPUTS = [{'classes_names': ['first', 'second']},
+                   {'classes_names_method_name': 'not_existing'},
+                   {'classes_names_method_name': 'not_existing', 'num_classes_method_name': 'not_existing'},
+                   {'cmap': 'Greens'},
+                   {'normalize': False}]
 
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                   classes_names_method_name='not_existing')
-        SaveConfusionMatrixTest.run_hook(hook)
 
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                   classes_names_method_name='not_existing',
-                                   num_classes_method_name='not_existing')
-        SaveConfusionMatrixTest.run_hook(hook)
+@pytest.mark.parametrize('params', _CORRECT_INPUTS)
+def test_correct_inputs(params, tmpdir):
+    hook = SaveConfusionMatrix(dataset=MockDataset(), output_dir=tmpdir, **params)
+    run_hook(hook)
 
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                   cmap='Greens')
-        SaveConfusionMatrixTest.run_hook(hook)
 
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                   normalize=False)
-        SaveConfusionMatrixTest.run_hook(hook)
+def test_after_epoch(tmpdir):
 
-        hook = SaveConfusionMatrix(dataset=TestDataset(), output_dir=self.tmpdir,
-                                   labels_name='special_labels',
-                                   predictions_name='special_predictions')
-        SaveConfusionMatrixTest.run_hook(hook, batch_data={'special_labels': [0, 1],
-                                                           'special_predictions': [0, 1]})
+    # test saving .png
+    hook = SaveConfusionMatrix(dataset=MockDataset(), output_dir=tmpdir)
+    run_hook(hook)
+    assert os.path.exists(os.path.join(tmpdir, 'confusion_matrix_epoch_0_train.png'))
+    # test storing .png
+    hook = SaveConfusionMatrix(dataset=MockDataset(), output_dir='', figure_action='store')
+    epoch_data = run_hook(hook)
+    assert tuple(epoch_data['train']['confusion_heatmap'].shape) == (480, 640, 3)
+
+    # test changing figure size
+    hook = SaveConfusionMatrix(dataset=MockDataset(), output_dir='', figure_action='store', figsize=(10, 15))
+    epoch_data = run_hook(hook)
+    dpi = matplotlib.rcParams['figure.dpi']
+    assert tuple(epoch_data['train']['confusion_heatmap'].shape) == (15*dpi, 10*dpi, 3)
+
+    # test whether using mask_name does not crash
+    hook = SaveConfusionMatrix(dataset=MockDataset(), output_dir=tmpdir,
+                               classes_names=['first', 'second'], mask_name='masks')
+    run_hook(hook)
+
+    # test correct input parameters with batch data
+    hook = SaveConfusionMatrix(dataset=MockDataset(), output_dir=tmpdir,
+                               labels_name='special_labels', predictions_name='special_predictions')
+    run_hook(hook, batch_data={'special_labels': [0, 1], 'special_predictions': [0, 1]})

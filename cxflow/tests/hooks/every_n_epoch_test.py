@@ -2,7 +2,6 @@
 Test module for EveryNEpoch hook (cxflow.hooks.every_n_epoch).
 """
 
-from cxflow.tests.test_core import CXTestCase
 from cxflow.hooks.every_n_epoch import EveryNEpoch
 
 
@@ -19,15 +18,12 @@ class DummyHook(EveryNEpoch):
         self._epoch_ids.append(epoch_id)
 
 
-class EveryNEpochTest(CXTestCase):
-    """Test case for :py:class:`cxflow.hooks.EveryNEpoch` hook."""
+def test_after_n_epoch():
+    """Test whether ``_after_n_epoch`` method is called every third epoch."""
 
-    def test_after_n_epoch(self):
-        """Test whether ``_after_n_epoch`` method is called every third epoch."""
+    hook = DummyHook(n_epochs=3)
 
-        hook = DummyHook(n_epochs=3)
+    for i in range(9):
+        hook.after_epoch(i)
 
-        for i in range(9):
-            hook.after_epoch(i)
-
-        self.assertEqual(hook._epoch_ids, [0, 3, 6])
+    assert hook._epoch_ids == [0, 3, 6]

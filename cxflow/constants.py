@@ -1,6 +1,6 @@
 """**cxflow** module containing various constants."""
 
-CXF_LOG_FORMAT = '%(asctime)s.%(msecs)06d: %(levelname)-8s@%(module)-15s: %(message)s'
+CXF_LOG_FORMAT = '%(asctime)s.%(msecs)03d: %(levelname)-8s@%(module)-12s: %(message)s'
 """General logging format."""
 
 CXF_LOG_DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
@@ -24,7 +24,7 @@ CXF_LOG_FILE = 'train.log'
 CXF_TRACE_FILE = 'trace.yaml'
 """Training trace filename."""
 
-CXF_TRAIN_STREAM = 'train'
+CXF_DEFAULT_TRAIN_STREAM = 'train'
 """Train stream name."""
 
 CXF_PREDICT_STREAM = 'predict'

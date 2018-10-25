@@ -52,7 +52,18 @@ def make_simple(data: Any) -> Any:
     :param data: data to be made simple (dict instead of CommentedMap etc.)
     :return: simplified data
     """
-    return yaml.load(yaml.dump(data, Dumper=ruamel.yaml.RoundTripDumper), ruamel.yaml.Loader)
+    return yaml.load(yaml.dump(data, Dumper=ruamel.yaml.RoundTripDumper), Loader=ruamel.yaml.Loader)
 
+
+def reload(data: Any) -> Any:
+    """
+    Dump and load yaml data.
+    This is useful to avoid many anchor parsing bugs. When you edit a yaml config, reload it to make sure
+    the changes are propagated to anchor expansions.
+
+    :param data: data to be reloaded
+    :return: reloaded data
+    """
+    return yaml.load(yaml.dump(data, Dumper=ruamel.yaml.RoundTripDumper), Loader=ruamel.yaml.RoundTripLoader)
 
 __all__ = []

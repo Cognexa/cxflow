@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Optional
 
 from . import AbstractHook, TrainingTerminated
-from ..constants import CXF_TRAIN_STREAM
+from ..constants import CXF_DEFAULT_TRAIN_STREAM
 from ..types import EpochData, Batch
 
 
@@ -32,7 +32,7 @@ class StopAfter(AbstractHook):
     """
 
     def __init__(self, epochs: Optional[int]=None, iterations: Optional[int]=None, minutes: Optional[float]=None,
-                 **kwargs):
+                 train_stream_name: str=CXF_DEFAULT_TRAIN_STREAM, **kwargs):
         """
         Create new StopAfter hook.
 
@@ -67,6 +67,7 @@ class StopAfter(AbstractHook):
         self._minutes = minutes
         self._iters_done = 0
         self._training_start = None
+        self._train_stream_name = train_stream_name
 
     def _check_train_time(self) -> None:
         """
@@ -91,7 +92,7 @@ class StopAfter(AbstractHook):
         :raise TrainingTerminated: if the number of iterations reaches ``self._iters``
         """
         self._check_train_time()
-        if self._iters is not None and stream_name == CXF_TRAIN_STREAM:
+        if self._iters is not None and stream_name == self._train_stream_name:
             self._iters_done += 1
             if self._iters_done >= self._iters:
                 raise TrainingTerminated('Training terminated after iteration {}'.format(self._iters_done))

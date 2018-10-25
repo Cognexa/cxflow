@@ -5,7 +5,7 @@ import typing
 
 import yaml
 
-from .yaml import load_yaml
+from .yaml import load_yaml, reload
 
 
 def parse_arg(arg: str) -> typing.Tuple[str, typing.Any]:
@@ -45,7 +45,7 @@ def load_config(config_file: str, additional_args: typing.Iterable[str]=()) -> d
             conf = conf[key_part]
         conf[key] = value
 
-    return config
+    return reload(config)
 
 
 __all__ = []

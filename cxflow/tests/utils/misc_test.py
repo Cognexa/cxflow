@@ -5,11 +5,11 @@ import os
 import signal
 import threading
 import platform
+import pytest
 
 from cxflow.hooks import TrainingTerminated
 from cxflow.utils.misc import CaughtInterrupts
 
-from ..test_core import CXTestCase
 
 kill = os.kill
 
@@ -53,13 +53,13 @@ if 'Windows' in platform.system():
     kill = kill_windows
 
 
-class CaughtInterruptsTest(CXTestCase):
+class TestCaughtInterrupts:
     """Test case for ``CaughtInterrupts`` with-resource class."""
 
     def _interrupt_handler(self, *_):
         self._signal_unhandled = True
 
-    def setUp(self):
+    def setup_method(self):
         """Register interrupt signal handlers."""
         for sig in CaughtInterrupts.INTERRUPT_SIGNALS:
             signal.signal(sig, self._interrupt_handler)
@@ -71,16 +71,16 @@ class CaughtInterruptsTest(CXTestCase):
             # without with-resource
             CaughtInterrupts()
             kill(os.getpid(), sig)
-            self.assertTrue(self._signal_unhandled,
-                            'CaughtInterrupts handles signal `{}` outside with-resource environment'.format(sig))
+            assert self._signal_unhandled, \
+                            'CaughtInterrupts handles signal `{}` outside with-resource environment'.format(sig)
             self._signal_unhandled = False
-            
+
             # with with-resource
             with CaughtInterrupts():
                 pass
             kill(os.getpid(), sig)
-            self.assertTrue(self._signal_unhandled,
-                            'CaughtInterrupts handles signal `{}` outside with-resource environment'.format(sig))
+            assert self._signal_unhandled, \
+                            'CaughtInterrupts handles signal `{}` outside with-resource environment'.format(sig)
             self._signal_unhandled = False
 
     def test_catching_inside(self):
@@ -88,15 +88,15 @@ class CaughtInterruptsTest(CXTestCase):
         for sig in CaughtInterrupts.INTERRUPT_SIGNALS:
             with CaughtInterrupts():
                 kill(os.getpid(), sig)
-            self.assertFalse(self._signal_unhandled,
-                             'CaughtInterrupts does not handle signal `{}` inside with-resource environment'.format(sig))
+            assert not self._signal_unhandled, \
+                             'CaughtInterrupts does not handle signal `{}` inside with-resource environment'.format(sig)
 
     def test_raising(self):
         """Test ``CaughtInterrupts`` does rise ``TrainingTerminated`` exception."""
         for sig in CaughtInterrupts.INTERRUPT_SIGNALS:
             with CaughtInterrupts() as catch:
                 kill(os.getpid(), sig)
-                with self.assertRaises(TrainingTerminated):
+                with pytest.raises(TrainingTerminated):
                     catch.raise_check_interrupt()
 
     def test_exit(self):
@@ -104,5 +104,5 @@ class CaughtInterruptsTest(CXTestCase):
         for sig in CaughtInterrupts.INTERRUPT_SIGNALS:
             with CaughtInterrupts():
                 kill(os.getpid(), sig)
-                with self.assertRaises(SystemExit):
+                with pytest.raises(SystemExit):
                     kill(os.getpid(), sig)
