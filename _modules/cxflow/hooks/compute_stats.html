@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>cxflow.hooks.compute_stats &#8212; cxflow 0.12.0 documentation</title>
-    
     <link rel="stylesheet" href="../../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/highlight.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '0.12.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -36,8 +24,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -169,8 +156,8 @@
 
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">variables</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_variable_aggregations</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="ComputeStats._raise_check_aggregation"><a class="viewcode-back" href="../../../cxflow/cxflow.hooks.html#cxflow.hooks.ComputeStats._raise_check_aggregation">[docs]</a>    <span class="k">def</span> <span class="nf">_raise_check_aggregation</span><span class="p">(</span><span class="n">aggregation</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="ComputeStats._raise_check_aggregation"><a class="viewcode-back" href="../../../cxflow/cxflow.hooks.html#cxflow.hooks.ComputeStats._raise_check_aggregation">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_raise_check_aggregation</span><span class="p">(</span><span class="n">aggregation</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Check whether the given aggregation is present in NumPy or it is one of EXTRA_AGGREGATIONS.</span>
 
@@ -181,8 +168,8 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Aggregation `</span><span class="si">{}</span><span class="s1">` is not a NumPy function or a member &#39;</span>
                              <span class="s1">&#39;of EXTRA_AGGREGATIONS.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aggregation</span><span class="p">))</span></div>
 
-    <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="ComputeStats._compute_aggregation"><a class="viewcode-back" href="../../../cxflow/cxflow.hooks.html#cxflow.hooks.ComputeStats._compute_aggregation">[docs]</a>    <span class="k">def</span> <span class="nf">_compute_aggregation</span><span class="p">(</span><span class="n">aggregation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]):</span>
+<div class="viewcode-block" id="ComputeStats._compute_aggregation"><a class="viewcode-back" href="../../../cxflow/cxflow.hooks.html#cxflow.hooks.ComputeStats._compute_aggregation">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_compute_aggregation</span><span class="p">(</span><span class="n">aggregation</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Any</span><span class="p">]):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Compute the specified aggregation on the given data.</span>
 
@@ -235,7 +222,7 @@
     </p>
     <p>
         &copy; Copyright 2017, Cognexa Solutions s.r.o..<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.9.<br/>
     </p>
   </div>
 </footer>

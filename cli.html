@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>CLI Reference &#8212; cxflow 0.12.0 documentation</title>
-    
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/highlight.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.12.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -38,8 +26,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -154,7 +141,7 @@ command line instruments. The design goal is to focus on defining the actual mod
 instead of the burdensome code, which just puts all the components together.</p>
 <p>With proper installation, the <kbd>cxflow</kbd> command should become available. The command comes with four basic sub-commands
 explained below.</p>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">usage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cxflow (train | resume | predict | dataset) [-v] [-o] ...</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">usage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cxflow (train | resume | predict | dataset) [-v] [-o] ...</span>
 </pre></div>
 </div>
 <p>All the sub-commands share the following arguments:</p>
@@ -171,8 +158,8 @@ explained below.</p>
 </tbody>
 </table><div class="section" id="cxflow-train">
 <h2>cxflow train<a class="headerlink" href="#cxflow-train" title="Permalink to this headline">¶</a></h2>
-<p>Start cxflow training from the <code class="docutils literal"><span class="pre">config_file</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">train</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_file</span>
+<p>Start cxflow training from the <code class="docutils literal notranslate"><span class="pre">config_file</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">train</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_file</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -190,8 +177,8 @@ explained below.</p>
 </div>
 <div class="section" id="cxflow-resume">
 <h2>cxflow resume<a class="headerlink" href="#cxflow-resume" title="Permalink to this headline">¶</a></h2>
-<p>Resume cxflow training from the <code class="docutils literal"><span class="pre">config_path</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">resume</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_path</span> <span class="p">[</span><span class="n">restore_from</span><span class="p">]</span>
+<p>Resume cxflow training from the <code class="docutils literal notranslate"><span class="pre">config_path</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">resume</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_path</span> <span class="p">[</span><span class="n">restore_from</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -212,8 +199,8 @@ explained below.</p>
 </div>
 <div class="section" id="cxflow-predict">
 <h2>cxflow predict<a class="headerlink" href="#cxflow-predict" title="Permalink to this headline">¶</a></h2>
-<p>Run prediction with the given <code class="docutils literal"><span class="pre">config_path</span></code>.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">predict</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_path</span> <span class="p">[</span><span class="n">restore_from</span><span class="p">]</span>
+<p>Run prediction with the given <code class="docutils literal notranslate"><span class="pre">config_path</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">predict</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">config_path</span> <span class="p">[</span><span class="n">restore_from</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -235,7 +222,7 @@ explained below.</p>
 <div class="section" id="cxflow-dataset">
 <h2>cxflow dataset<a class="headerlink" href="#cxflow-dataset" title="Permalink to this headline">¶</a></h2>
 <p>Invoke arbitrary dataset method.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">dataset</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">method</span> <span class="n">config_file</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">dataset</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="n">method</span> <span class="n">config_file</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -257,7 +244,7 @@ explained below.</p>
 <div class="section" id="cxflow-ls">
 <h2>cxflow ls<a class="headerlink" href="#cxflow-ls" title="Permalink to this headline">¶</a></h2>
 <p>List training log dirs in the given path.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">ls</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="nb">dir</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">ls</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">a</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">r</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="nb">dir</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -269,7 +256,7 @@ explained below.</p>
 <tr><td class="option-group">
 <kbd>dir</kbd></td>
 <td><p class="first">path to the log directory to be listed</p>
-<p class="last">Default: &#8221;./log&#8221;</p>
+<p class="last">Default: “./log”</p>
 </td></tr>
 </tbody>
 </table>
@@ -281,23 +268,23 @@ explained below.</p>
 <col class="description" />
 <tbody valign="top">
 <tr><td class="option-group">
-<kbd>-l, &#8211;long</kbd></td>
+<kbd>-l, --long</kbd></td>
 <td><p class="first">use long listing format</p>
 <p class="last">Default: False</p>
 </td></tr>
 <tr><td class="option-group">
-<kbd>-a, &#8211;all</kbd></td>
+<kbd>-a, --all</kbd></td>
 <td><p class="first">include trainings with no epochs done</p>
 <p class="last">Default: False</p>
 </td></tr>
 <tr><td class="option-group" colspan="2">
-<kbd>-r, &#8211;recursive</kbd></td>
+<kbd>-r, --recursive</kbd></td>
 </tr>
 <tr><td>&#160;</td><td><p class="first">list all the dirs recursively, stop at training dirs</p>
 <p class="last">Default: False</p>
 </td></tr>
 <tr><td class="option-group">
-<kbd>-v, &#8211;verbose</kbd></td>
+<kbd>-v, --verbose</kbd></td>
 <td><p class="first">print more verbose output, applicable only when a single train dir is listed</p>
 <p class="last">Default: False</p>
 </td></tr>
@@ -308,7 +295,7 @@ explained below.</p>
 <div class="section" id="cxflow-prune">
 <h2>cxflow prune<a class="headerlink" href="#cxflow-prune" title="Permalink to this headline">¶</a></h2>
 <p>Prune training log dirs in the given path without finished epochs.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">prune</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">e</span> <span class="n">EPOCHS</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span> <span class="p">[</span><span class="nb">dir</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">cxflow</span> <span class="n">prune</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">e</span> <span class="n">EPOCHS</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">s</span><span class="p">]</span> <span class="p">[</span><span class="nb">dir</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
@@ -320,7 +307,7 @@ explained below.</p>
 <tr><td class="option-group">
 <kbd>dir</kbd></td>
 <td><p class="first">path to the log directory to be pruned</p>
-<p class="last">Default: &#8221;./log&#8221;</p>
+<p class="last">Default: “./log”</p>
 </td></tr>
 </tbody>
 </table>
@@ -332,12 +319,12 @@ explained below.</p>
 <col class="description" />
 <tbody valign="top">
 <tr><td class="option-group">
-<kbd>-e, &#8211;epochs</kbd></td>
+<kbd>-e, --epochs</kbd></td>
 <td><p class="first">keep only training log dirs having at least this many completed epochs, default 1</p>
 <p class="last">Default: 1</p>
 </td></tr>
 <tr><td class="option-group">
-<kbd>-s, &#8211;subdirs</kbd></td>
+<kbd>-s, --subdirs</kbd></td>
 <td><p class="first">delete all subdirectories in training directories</p>
 <p class="last">Default: False</p>
 </td></tr>
@@ -361,7 +348,7 @@ explained below.</p>
     </p>
     <p>
         &copy; Copyright 2017, Cognexa Solutions s.r.o..<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.9.<br/>
     </p>
   </div>
 </footer>

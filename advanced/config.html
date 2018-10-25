@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Configuration &#8212; cxflow 0.12.0 documentation</title>
-    
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/highlight.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.12.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -38,8 +26,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -130,28 +117,28 @@
   <div class="section" id="configuration">
 <h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
 <p>Configuration is a crucial part of <strong>cxflow</strong> linking all the components together with just a few lines of YAML.</p>
-<p>If you aren&#8217;t comfortable with YAML, JSON documents are supported as well (YAML is actually a superset of JSON).
+<p>If you aren’t comfortable with YAML, JSON documents are supported as well (YAML is actually a superset of JSON).
 However, JSON does not support advanced features such as <a class="reference external" href="https://learnxinyminutes.com/docs/yaml/">anchors</a>
 or simple comments.</p>
 <p>Each configuration file is divided into following sections:</p>
 <ul class="simple">
-<li><code class="docutils literal"><span class="pre">dataset</span></code></li>
-<li><code class="docutils literal"><span class="pre">model</span></code></li>
-<li><code class="docutils literal"><span class="pre">hooks</span></code></li>
-<li><code class="docutils literal"><span class="pre">main_loop</span></code></li>
-<li><code class="docutils literal"><span class="pre">eval</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">dataset</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">model</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">hooks</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">main_loop</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">eval</span></code></li>
 </ul>
-<p>wherein only <code class="docutils literal"><span class="pre">dataset</span></code> and <code class="docutils literal"><span class="pre">model</span></code> sections are mandatory.</p>
+<p>wherein only <code class="docutils literal notranslate"><span class="pre">dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">model</span></code> sections are mandatory.</p>
 <div class="section" id="dataset">
 <h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
 <p>The dataset section contains, unsurprisingly, the dataset configuration. First of all, one need to specify the
-fully qualified name of the dataset in the <code class="docutils literal"><span class="pre">class</span></code> entry.</p>
+fully qualified name of the dataset in the <code class="docutils literal notranslate"><span class="pre">class</span></code> entry.</p>
 <p>All the remaining parameters are passed to the dataset constructor in the form of a string-encoded YAML.</p>
 <p>The common dataset arguments can include augmentation setting for the training
 stream, the data root directory or a batch size, to name but a few.</p>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">example dataset configuration</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dataset</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">dataset</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">datasets.my_dataset.MyDataset</span>
 
   <span class="l l-Scalar l-Scalar-Plain">data_root</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/my_data</span>
@@ -167,8 +154,8 @@ stream, the data root directory or a batch size, to name but a few.</p>
 <div class="section" id="model">
 <h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <p>The model section specifies the configuration of the model to be trained.
-Again, it contains a <code class="docutils literal"><span class="pre">class</span></code> that <strong>cxflow</strong> uses for constructing the model.</p>
-<p>In addition, <code class="docutils literal"><span class="pre">inputs</span></code> and <code class="docutils literal"><span class="pre">outputs</span></code> entries are required as well.
+Again, it contains a <code class="docutils literal notranslate"><span class="pre">class</span></code> that <strong>cxflow</strong> uses for constructing the model.</p>
+<p>In addition, <code class="docutils literal notranslate"><span class="pre">inputs</span></code> and <code class="docutils literal notranslate"><span class="pre">outputs</span></code> entries are required as well.
 These arguments define what sources will be obtained from the dataset stream and which will
 be provided by the model.
 The remaining parameters are directly passed to the model constructor from where they might
@@ -177,7 +164,7 @@ The remaining parameters are directly passed to the model constructor from where
 the number of hidden neurons or a learning rate as in the following example:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">model configuration with additional parameters</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">models.my_model.MyModel</span>
   <span class="l l-Scalar l-Scalar-Plain">inputs</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">image</span><span class="p p-Indicator">,</span> <span class="nv">animal</span><span class="p p-Indicator">]</span>
   <span class="l l-Scalar l-Scalar-Plain">outputs</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">prediction</span><span class="p p-Indicator">,</span> <span class="nv">loss</span><span class="p p-Indicator">,</span> <span class="nv">accuracy</span><span class="p p-Indicator">]</span>
@@ -208,7 +195,7 @@ train their embeddings.</p>
 <p>Hooks are specified by their fully qualified names as in the following example:</p>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">non-parametrized hooks</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">hooks</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">hooks</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">LogProfile</span>  <span class="c1"># cxflow.log_profile.LogProfile</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cxflow_tensorflow.TensorBoardHook</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">my_hooks.my_hook.MyHook</span>
@@ -217,14 +204,14 @@ train their embeddings.</p>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
-<p class="last">Standard <strong>cxflow</strong> hooks from <code class="docutils literal"><span class="pre">cxflow.hooks</span></code> module may be referenced only by their names,
-e.g.: <code class="docutils literal"><span class="pre">LogProfile</span></code> instead of <code class="docutils literal"><span class="pre">cxflow.log_profile.LogProfile</span></code>.</p>
+<p class="last">Standard <strong>cxflow</strong> hooks from <code class="docutils literal notranslate"><span class="pre">cxflow.hooks</span></code> module may be referenced only by their names,
+e.g.: <code class="docutils literal notranslate"><span class="pre">LogProfile</span></code> instead of <code class="docutils literal notranslate"><span class="pre">cxflow.log_profile.LogProfile</span></code>.</p>
 </div>
 <p>In some cases, we need to configure the hooks being created with additional parameters. To do so, simply define a
 dictionary of parameters which will be passed to the hook constructor. E.g.:</p>
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-text">parametrized hooks</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">hooks</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">hooks</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cxflow_scikit.ClassificationInfoHook</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">predicted_variable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">predictions</span>
       <span class="l l-Scalar l-Scalar-Plain">gold_variable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">labels</span>
@@ -237,32 +224,33 @@ dictionary of parameters which will be passed to the hook constructor. E.g.:</p>
 </div>
 <div class="section" id="id1">
 <h2>Main Loop<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">main_loop</span></code> section is optional. Any parameter specified there is forwarded to the
-<a class="reference internal" href="../cxflow/cxflow.html#cxflow.MainLoop" title="cxflow.MainLoop"><code class="xref py py-class docutils literal"><span class="pre">cxflow.MainLoop</span></code></a> constructor which takes the following arguments:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">main_loop</span></code> section is optional. Any parameter specified there is forwarded to the
+<a class="reference internal" href="../cxflow/cxflow.html#cxflow.MainLoop" title="cxflow.MainLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">cxflow.MainLoop</span></code></a> constructor which takes the following arguments:</p>
 <dl class="method">
 <dt id="cxflow.MainLoop.__init__">
-<code class="descclassname">MainLoop.</code><code class="descname">__init__</code><span class="sig-paren">(</span><em>model</em>, <em>dataset</em>, <em>hooks=()</em>, <em>extra_streams=()</em>, <em>buffer=0</em>, <em>on_empty_batch='error'</em>, <em>on_empty_stream='error'</em>, <em>on_unused_sources='warn'</em>, <em>fixed_batch_size=None</em>, <em>fixed_epoch_size=None</em>, <em>skip_zeroth_epoch=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/main_loop.html#MainLoop.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.MainLoop.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">MainLoop.</code><code class="descname">__init__</code><span class="sig-paren">(</span><em>model</em>, <em>dataset</em>, <em>hooks=()</em>, <em>train_stream_name='train'</em>, <em>extra_streams=()</em>, <em>buffer=0</em>, <em>on_empty_batch='error'</em>, <em>on_empty_stream='error'</em>, <em>on_unused_sources='warn'</em>, <em>fixed_batch_size=None</em>, <em>fixed_epoch_size=None</em>, <em>skip_zeroth_epoch=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/main_loop.html#MainLoop.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.MainLoop.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>model</strong> (<a class="reference internal" href="../cxflow/cxflow.models.html#cxflow.models.AbstractModel" title="cxflow.models.AbstractModel"><code class="xref py py-class docutils literal"><span class="pre">AbstractModel</span></code></a>) &#8211; trained model</li>
-<li><strong>dataset</strong> (<a class="reference internal" href="../cxflow/cxflow.datasets.html#cxflow.datasets.AbstractDataset" title="cxflow.datasets.AbstractDataset"><code class="xref py py-class docutils literal"><span class="pre">AbstractDataset</span></code></a>) &#8211; loaded dataset</li>
-<li><strong>hooks</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Iterable</span></code></a>[<a class="reference internal" href="../cxflow/cxflow.hooks.html#cxflow.hooks.AbstractHook" title="cxflow.hooks.AbstractHook"><code class="xref py py-class docutils literal"><span class="pre">AbstractHook</span></code></a>]) &#8211; training hooks</li>
-<li><strong>extra_streams</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]) &#8211; additional stream names to be evaluated between epochs</li>
-<li><strong>buffer</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">int</span></code></a>) &#8211; size of the batch buffer, 0 means no buffer</li>
-<li><strong>on_empty_batch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>) &#8211; action to take when batch is empty; one of <code class="xref py py-attr docutils literal"><span class="pre">MainLoop.EMPTY_ACTIONS</span></code></li>
-<li><strong>on_empty_stream</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>) &#8211; action to take when stream is empty; one of <code class="xref py py-attr docutils literal"><span class="pre">MainLoop.EMPTY_ACTIONS</span></code></li>
-<li><strong>on_unused_sources</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>) &#8211; action to take when stream provides an unused sources; one of
-<code class="xref py py-attr docutils literal"><span class="pre">UNUSED_SOURCE_ACTIONS</span></code></li>
-<li><strong>fixed_batch_size</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">int</span></code></a>]) &#8211; if specified, main_loop removes all batches that do not have the specified size</li>
-<li><strong>fixed_epoch_size</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">int</span></code></a>]) &#8211; if specified, cut the train stream to epochs of at most <code class="docutils literal"><span class="pre">fixed_epoch_size</span></code> batches</li>
-<li><strong>skip_zeroth_epoch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">bool</span></code></a>) &#8211; if specified, main loop skips the 0th epoch</li>
+<li><strong>model</strong> (<a class="reference internal" href="../cxflow/cxflow.models.html#cxflow.models.AbstractModel" title="cxflow.models.AbstractModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractModel</span></code></a>) – trained model</li>
+<li><strong>dataset</strong> (<a class="reference internal" href="../cxflow/cxflow.datasets.html#cxflow.datasets.AbstractDataset" title="cxflow.datasets.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDataset</span></code></a>) – loaded dataset</li>
+<li><strong>hooks</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference internal" href="../cxflow/cxflow.hooks.html#cxflow.hooks.AbstractHook" title="cxflow.hooks.AbstractHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractHook</span></code></a>]) – training hooks</li>
+<li><strong>train_stream_name</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – name of the training stream</li>
+<li><strong>extra_streams</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.List" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – additional stream names to be evaluated between epochs</li>
+<li><strong>buffer</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) – size of the batch buffer, 0 means no buffer</li>
+<li><strong>on_empty_batch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – action to take when batch is empty; one of <a class="reference internal" href="../cxflow/cxflow.html#cxflow.MainLoop.EMPTY_ACTIONS" title="cxflow.MainLoop.EMPTY_ACTIONS"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MainLoop.EMPTY_ACTIONS</span></code></a></li>
+<li><strong>on_empty_stream</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – action to take when stream is empty; one of <a class="reference internal" href="../cxflow/cxflow.html#cxflow.MainLoop.EMPTY_ACTIONS" title="cxflow.MainLoop.EMPTY_ACTIONS"><code class="xref py py-attr docutils literal notranslate"><span class="pre">MainLoop.EMPTY_ACTIONS</span></code></a></li>
+<li><strong>on_unused_sources</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – action to take when stream provides an unused sources; one of
+<a class="reference internal" href="../cxflow/cxflow.html#cxflow.MainLoop.UNUSED_SOURCE_ACTIONS" title="cxflow.MainLoop.UNUSED_SOURCE_ACTIONS"><code class="xref py py-attr docutils literal notranslate"><span class="pre">UNUSED_SOURCE_ACTIONS</span></code></a></li>
+<li><strong>fixed_batch_size</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – if specified, main_loop removes all batches that do not have the specified size</li>
+<li><strong>fixed_epoch_size</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#int" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>]) – if specified, cut the train stream to epochs of at most <code class="docutils literal notranslate"><span class="pre">fixed_epoch_size</span></code> batches</li>
+<li><strong>skip_zeroth_epoch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – if specified, main loop skips the 0th epoch</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#AssertionError" title="(in Python v3.6)"><strong>AssertionError</strong></a> &#8211; in case of unsupported value of <code class="docutils literal"><span class="pre">on_empty_batch</span></code>, <code class="docutils literal"><span class="pre">on_empty_stream</span></code> or         <code class="docutils literal"><span class="pre">on_unused_sources</span></code></p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#AssertionError" title="(in Python v3.6)"><strong>AssertionError</strong></a> – in case of unsupported value of <code class="docutils literal notranslate"><span class="pre">on_empty_batch</span></code>, <code class="docutils literal notranslate"><span class="pre">on_empty_stream</span></code> or         <code class="docutils literal notranslate"><span class="pre">on_unused_sources</span></code></p>
 </td>
 </tr>
 </tbody>
@@ -271,7 +259,7 @@ dictionary of parameters which will be passed to the hook constructor. E.g.:</p>
 
 <div class="literal-block-wrapper docutils container" id="id6">
 <div class="code-block-caption"><span class="caption-text">main loop configuration</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">main_loop</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">main_loop</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">extra_streams</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="nv">valid</span><span class="p p-Indicator">,</span> <span class="nv">test</span><span class="p p-Indicator">]</span>
   <span class="l l-Scalar l-Scalar-Plain">skip_zeroth_epoch</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
 </pre></div>
@@ -282,18 +270,18 @@ dictionary of parameters which will be passed to the hook constructor. E.g.:</p>
 <h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
 <p>Naturally, the evaluation (sometimes referred as <em>prediction</em> or <em>inference</em>)
 of the model on new unannotated data differs from its training.
-In this phase, we don&#8217;t know the ground truth, hence the dataset sources are different.
+In this phase, we don’t know the ground truth, hence the dataset sources are different.
 In such a situation, some of the metrics are impossible to measure, e.g. accuracy, which requires the
 ground truth. Most likely, we also need a different set of hooks to process the model outputs.</p>
-<p>For this reason, one can override the configuration with a special <code class="docutils literal"><span class="pre">eval</span></code> section.
-For each data stream, a sub-section (e.g.: <code class="docutils literal"><span class="pre">eval.my_stream</span></code>) is expected to match the overall configuration structure,
-i.e. it <strong>may</strong> contain the <code class="docutils literal"><span class="pre">model</span></code>, <code class="docutils literal"><span class="pre">dataset</span></code>, <code class="docutils literal"><span class="pre">hooks</span></code> and/or  <code class="docutils literal"><span class="pre">main_loop</span></code> sections.</p>
+<p>For this reason, one can override the configuration with a special <code class="docutils literal notranslate"><span class="pre">eval</span></code> section.
+For each data stream, a sub-section (e.g.: <code class="docutils literal notranslate"><span class="pre">eval.my_stream</span></code>) is expected to match the overall configuration structure,
+i.e. it <strong>may</strong> contain the <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">dataset</span></code>, <code class="docutils literal notranslate"><span class="pre">hooks</span></code> and/or  <code class="docutils literal notranslate"><span class="pre">main_loop</span></code> sections.</p>
 <p>In the following example, we use all the original settings but the model inputs and outputs are overridden. Furthermore,
 a different list of hooks is specified. Yet another example is available in our
 <a class="reference external" href="https://github.com/Cognexa/cxflow-examples/tree/master/imdb">examples repository &#64;GitHub</a>.</p>
 <div class="literal-block-wrapper docutils container" id="id7">
 <div class="code-block-caption"><span class="caption-text">eval section of <strong>cxflow</strong> configuration</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="nn">...</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
 <span class="l l-Scalar l-Scalar-Plain">eval</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">predict</span><span class="p p-Indicator">:</span>  <span class="c1"># configuration for the predict_stream</span>
     <span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
@@ -307,7 +295,7 @@ a different list of hooks is specified. Yet another example is available in our
 </div>
 </div>
 <p>Evaluation of the predict stream can then be invoked with:</p>
-<p><code class="docutils literal"><span class="pre">`</span>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
 <span class="pre">cxflow</span> <span class="pre">eval</span> <span class="pre">predict</span> <span class="pre">path/to/model</span>
 <span class="pre">`</span></code></p>
 </div>
@@ -342,7 +330,7 @@ changed. For instance, the results may be saved into a file/database, or they ca
     </p>
     <p>
         &copy; Copyright 2017, Cognexa Solutions s.r.o..<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.9.<br/>
     </p>
   </div>
 </footer>

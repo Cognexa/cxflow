@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>cxflow.models &#8212; cxflow 0.12.0 documentation</title>
-    
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/highlight.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '0.12.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -37,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
     <div class="container">
@@ -93,7 +80,7 @@
     <a href="cxflow.hooks.html" title="Previous Chapter: cxflow.hooks"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; cxflow.hooks</span>
     </a>
     </div><ul>
-<li><a class="reference internal" href="#"><code class="docutils literal"><span class="pre">cxflow.models</span></code></a><ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">cxflow.models</span></code></a><ul>
 <li><a class="reference internal" href="#classes">Classes</a></li>
 </ul>
 </li>
@@ -118,23 +105,23 @@
     <div class="col-md-9 content">
       
   <div class="section" id="module-cxflow.models">
-<span id="cxflow-models"></span><h1><code class="docutils literal"><span class="pre">cxflow.models</span></code><a class="headerlink" href="#module-cxflow.models" title="Permalink to this headline">¶</a></h1>
+<span id="cxflow-models"></span><h1><code class="docutils literal notranslate"><span class="pre">cxflow.models</span></code><a class="headerlink" href="#module-cxflow.models" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="classes">
 <h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><a class="reference internal" href="#cxflow.models.AbstractModel" title="cxflow.models.AbstractModel"><code class="xref py py-class docutils literal"><span class="pre">AbstractModel</span></code></a>:
+<li><a class="reference internal" href="#cxflow.models.AbstractModel" title="cxflow.models.AbstractModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractModel</span></code></a>:
 Abstract machine learning model which exposes input and output names, run and save methods.</li>
-<li><a class="reference internal" href="#cxflow.models.Ensemble" title="cxflow.models.Ensemble"><code class="xref py py-class docutils literal"><span class="pre">Ensemble</span></code></a>:
+<li><a class="reference internal" href="#cxflow.models.Ensemble" title="cxflow.models.Ensemble"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ensemble</span></code></a>:
 Ensemble model facilitates assembling multiple models into one for more accurate predictions.</li>
-<li><a class="reference internal" href="#cxflow.models.Sequence" title="cxflow.models.Sequence"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>:
+<li><a class="reference internal" href="#cxflow.models.Sequence" title="cxflow.models.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>:
 Model sequence provides simple abstraction for sequential application of multiple models to input batches.</li>
 </ul>
 <dl class="class">
 <dt id="cxflow.models.AbstractModel">
 <em class="property">class </em><code class="descclassname">cxflow.models.</code><code class="descname">AbstractModel</code><span class="sig-paren">(</span><em>dataset</em>, <em>log_dir</em>, <em>restore_from=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#cxflow.models.AbstractModel" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Abstract machine learning model which exposes input and output names, run and save methods.
-<cite>AbstractModel</cite> implementations are trainable with <a class="reference internal" href="cxflow.html#cxflow.MainLoop" title="cxflow.MainLoop"><code class="xref py py-class docutils literal"><span class="pre">cxflow.MainLoop</span></code></a>.</p>
+<cite>AbstractModel</cite> implementations are trainable with <a class="reference internal" href="cxflow.html#cxflow.MainLoop" title="cxflow.MainLoop"><code class="xref py py-class docutils literal notranslate"><span class="pre">cxflow.MainLoop</span></code></a>.</p>
 <img src="../_images/inheritance-05c81c4ef143363a245b51c23e804f03e09efa9d.png" alt="Inheritance diagram of AbstractModel" class="inheritance"/>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -143,18 +130,18 @@ Model sequence provides simple abstraction for sequential application of multipl
 <dt id="cxflow.models.AbstractModel.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>dataset</em>, <em>log_dir</em>, <em>restore_from=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/abstract_model.html#AbstractModel.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.AbstractModel.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Model constructor interface.</p>
-<p>Additional parameters (currently covered by <code class="docutils literal"><span class="pre">**kwargs</span></code>) are passed
-according to the configuration <code class="docutils literal"><span class="pre">model</span></code> section.</p>
+<p>Additional parameters (currently covered by <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>) are passed
+according to the configuration <code class="docutils literal notranslate"><span class="pre">model</span></code> section.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.AbstractDataset" title="cxflow.datasets.AbstractDataset"><code class="xref py py-class docutils literal"><span class="pre">AbstractDataset</span></code></a>]) &#8211; dataset object</li>
-<li><strong>log_dir</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>) &#8211; existing directory in which all output files should be stored</li>
-<li><strong>restore_from</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]) &#8211; information passed to the model constructor (backend-specific);
+<li><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.AbstractDataset" title="cxflow.datasets.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDataset</span></code></a>]) – dataset object</li>
+<li><strong>log_dir</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – existing directory in which all output files should be stored</li>
+<li><strong>restore_from</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – information passed to the model constructor (backend-specific);
 usually a directory in which the trained model is stored</li>
-<li><strong>kwargs</strong> &#8211; configuration section <code class="docutils literal"><span class="pre">model</span></code></li>
+<li><strong>kwargs</strong> – configuration section <code class="docutils literal notranslate"><span class="pre">model</span></code></li>
 </ul>
 </td>
 </tr>
@@ -170,7 +157,7 @@ usually a directory in which the trained model is stored</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
 </tr>
 </tbody>
 </table>
@@ -184,7 +171,7 @@ usually a directory in which the trained model is stored</li>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
 </tr>
 </tbody>
 </table>
@@ -193,14 +180,14 @@ usually a directory in which the trained model is stored</li>
 <dl class="attribute">
 <dt id="cxflow.models.AbstractModel.restore_fallback">
 <code class="descname">restore_fallback</code><a class="headerlink" href="#cxflow.models.AbstractModel.restore_fallback" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return the fully-qualified name of the fallback restore class (e.g. <code class="docutils literal"><span class="pre">module.submodule.BaseClass</span></code>).</p>
+<dd><p>Return the fully-qualified name of the fallback restore class (e.g. <code class="docutils literal notranslate"><span class="pre">module.submodule.BaseClass</span></code>).</p>
 <p>When restoring a model, <strong>cxflow</strong> tries to use the fallback class if the construction of the model
 object specified in <cite>model</cite> configuration section fails.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">fully-qualified name of the fallback restore class</td>
 </tr>
@@ -212,19 +199,19 @@ object specified in <cite>model</cite> configuration section fails.</p>
 <dt id="cxflow.models.AbstractModel.run">
 <code class="descname">run</code><span class="sig-paren">(</span><em>batch</em>, <em>train</em>, <em>stream</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/abstract_model.html#AbstractModel.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.AbstractModel.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run feed-forward pass with the given batch and return the results as dict.</p>
-<p>When <code class="docutils literal"><span class="pre">train=True</span></code>, also update parameters.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">train=True</span></code>, also update parameters.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>batch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Any</span></code></a>]]) &#8211; batch to be processed</li>
-<li><strong>train</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">bool</span></code></a>) &#8211; <code class="docutils literal"><span class="pre">True</span></code> if this batch should be used for model update, <code class="docutils literal"><span class="pre">False</span></code> otherwise</li>
-<li><strong>stream</strong> (<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.StreamWrapper" title="cxflow.datasets.StreamWrapper"><code class="xref py py-class docutils literal"><span class="pre">StreamWrapper</span></code></a>) &#8211; stream wrapper (useful for precise buffer management)</li>
+<li><strong>batch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]]) – batch to be processed</li>
+<li><strong>train</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if this batch should be used for model update, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</li>
+<li><strong>stream</strong> (<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.StreamWrapper" title="cxflow.datasets.StreamWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamWrapper</span></code></a>) – stream wrapper (useful for precise buffer management)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Any</span></code></a>]]</p>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]]</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">results dict</p>
@@ -237,14 +224,14 @@ object specified in <cite>model</cite> configuration section fails.</p>
 <dl class="method">
 <dt id="cxflow.models.AbstractModel.save">
 <code class="descname">save</code><span class="sig-paren">(</span><em>name_suffix</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/abstract_model.html#AbstractModel.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.AbstractModel.save" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save the model parameters with the given <code class="docutils literal"><span class="pre">name_suffix</span></code>.</p>
+<dd><p>Save the model parameters with the given <code class="docutils literal notranslate"><span class="pre">name_suffix</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_suffix</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>) &#8211; name suffix to be appended to the saved model</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name_suffix</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – name suffix to be appended to the saved model</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a></td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">path to the saved file/dir</td>
 </tr>
@@ -257,7 +244,7 @@ object specified in <cite>model</cite> configuration section fails.</p>
 <dl class="class">
 <dt id="cxflow.models.Ensemble">
 <em class="property">class </em><code class="descclassname">cxflow.models.</code><code class="descname">Ensemble</code><span class="sig-paren">(</span><em>inputs</em>, <em>outputs</em>, <em>aggregation='major_vote'</em>, <em>models_root=None</em>, <em>model_paths=None</em>, <em>dataset=None</em>, <em>eager_loading=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/ensemble.html#Ensemble"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.Ensemble" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#cxflow.models.AbstractModel" title="cxflow.models.AbstractModel"><code class="xref py py-class docutils literal"><span class="pre">models.AbstractModel</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#cxflow.models.AbstractModel" title="cxflow.models.AbstractModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">models.AbstractModel</span></code></a></p>
 <p>Ensemble model facilitates assembling multiple models into one for more accurate predictions.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
@@ -266,7 +253,7 @@ object specified in <cite>model</cite> configuration section fails.</p>
 <p>The typical usage is to train multiple (possibly different) models and assemble them with this class.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-text">usage from config</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MyEnsemble</span>
   <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cxflow.models.Ensemble</span>
 
@@ -279,7 +266,7 @@ object specified in <cite>model</cite> configuration section fails.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-text">usage from python</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cxflow</span> <span class="kn">as</span> <span class="nn">cx</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cxflow</span> <span class="kn">as</span> <span class="nn">cx</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Ensemble</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">],</span> <span class="n">outputs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;predictions&#39;</span><span class="p">],</span> <span class="n">aggregation</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span>
                            <span class="n">models_root</span><span class="o">=</span><span class="s1">&#39;/my/directory/with/models&#39;</span><span class="p">)</span>
@@ -287,10 +274,7 @@ object specified in <cite>model</cite> configuration section fails.</p>
 </pre></div>
 </div>
 </div>
-<img src="../_images/inheritance-ee4f756d1670277aed2624c5bcd8ffea2198fe70.png" alt="Inheritance diagram of Ensemble" usemap="#inheritance2bb50beb95" class="inheritance"/>
-<map id="inheritance2bb50beb95" name="inheritance2bb50beb95">
-<area shape="rect" id="node2" title="Ensemble model facilitates assembling multiple models into one for more accurate predictions." alt="" coords="168,5,255,31"/>
-</map>
+<img src="../_images/inheritance-ee4f756d1670277aed2624c5bcd8ffea2198fe70.png" alt="Inheritance diagram of Ensemble" class="inheritance"/>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -304,27 +288,27 @@ object specified in <cite>model</cite> configuration section fails.</p>
 <dt id="cxflow.models.Ensemble.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>inputs</em>, <em>outputs</em>, <em>aggregation='major_vote'</em>, <em>models_root=None</em>, <em>model_paths=None</em>, <em>dataset=None</em>, <em>eager_loading=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/ensemble.html#Ensemble.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.Ensemble.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create new Ensemble.</p>
-<p>If no <code class="docutils literal"><span class="pre">models_paths</span></code> are specified, all the sub-directories of the <code class="docutils literal"><span class="pre">models_root</span></code> will be taken as the models
+<p>If no <code class="docutils literal notranslate"><span class="pre">models_paths</span></code> are specified, all the sub-directories of the <code class="docutils literal notranslate"><span class="pre">models_root</span></code> will be taken as the models
 to be assembled together.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>inputs</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]) &#8211; model input names</li>
-<li><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]) &#8211; model output names</li>
-<li><strong>aggregation</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>) &#8211; aggregation method, one of <a class="reference internal" href="#cxflow.models.Ensemble.AGGREGATION_METHODS" title="cxflow.models.Ensemble.AGGREGATION_METHODS"><code class="xref py py-attr docutils literal"><span class="pre">Ensemble.AGGREGATION_METHODS</span></code></a></li>
-<li><strong>models_root</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]) &#8211; optional root directory of the models to be assembled together</li>
-<li><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]]) &#8211; optional list of model directory names/paths</li>
-<li><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.AbstractDataset" title="cxflow.datasets.AbstractDataset"><code class="xref py py-class docutils literal"><span class="pre">AbstractDataset</span></code></a>]) &#8211; optional <strong>cxflow</strong> dataset (will be passed to the assembled models)</li>
-<li><strong>eager_loading</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">bool</span></code></a>) &#8211; load all the models in the constructor</li>
-<li><strong>kwargs</strong> &#8211; additional kwargs (unused)</li>
+<li><strong>inputs</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – model input names</li>
+<li><strong>outputs</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – model output names</li>
+<li><strong>aggregation</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>) – aggregation method, one of <a class="reference internal" href="#cxflow.models.Ensemble.AGGREGATION_METHODS" title="cxflow.models.Ensemble.AGGREGATION_METHODS"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Ensemble.AGGREGATION_METHODS</span></code></a></li>
+<li><strong>models_root</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – optional root directory of the models to be assembled together</li>
+<li><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]]) – optional list of model directory names/paths</li>
+<li><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.AbstractDataset" title="cxflow.datasets.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDataset</span></code></a>]) – optional <strong>cxflow</strong> dataset (will be passed to the assembled models)</li>
+<li><strong>eager_loading</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – load all the models in the constructor</li>
+<li><strong>kwargs</strong> – additional kwargs (unused)</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
-<li><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#AssertionError" title="(in Python v3.6)"><strong>AssertionError</strong></a> &#8211; if neither one of <code class="docutils literal"><span class="pre">models_root</span></code> and <code class="docutils literal"><span class="pre">model_paths</span></code> is specified</li>
-<li><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#AssertionError" title="(in Python v3.6)"><strong>AssertionError</strong></a> &#8211; if the specified <code class="docutils literal"><span class="pre">aggregation</span></code> is not one of <a class="reference internal" href="#cxflow.models.Ensemble.AGGREGATION_METHODS" title="cxflow.models.Ensemble.AGGREGATION_METHODS"><code class="xref py py-attr docutils literal"><span class="pre">Ensemble.AGGREGATION_METHODS</span></code></a></li>
+<li><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#AssertionError" title="(in Python v3.6)"><strong>AssertionError</strong></a> – if neither one of <code class="docutils literal notranslate"><span class="pre">models_root</span></code> and <code class="docutils literal notranslate"><span class="pre">model_paths</span></code> is specified</li>
+<li><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#AssertionError" title="(in Python v3.6)"><strong>AssertionError</strong></a> – if the specified <code class="docutils literal notranslate"><span class="pre">aggregation</span></code> is not one of <a class="reference internal" href="#cxflow.models.Ensemble.AGGREGATION_METHODS" title="cxflow.models.Ensemble.AGGREGATION_METHODS"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Ensemble.AGGREGATION_METHODS</span></code></a></li>
 </ul>
 </td>
 </tr>
@@ -335,12 +319,12 @@ to be assembled together.</p>
 <dl class="method">
 <dt id="cxflow.models.Ensemble._load_models">
 <code class="descname">_load_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/ensemble.html#Ensemble._load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.Ensemble._load_models" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maybe load all the models to be assembled together and save them to the <code class="docutils literal"><span class="pre">self._models</span></code> attribute.</p>
+<dd><p>Maybe load all the models to be assembled together and save them to the <code class="docutils literal notranslate"><span class="pre">self._models</span></code> attribute.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">None</span></code></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -354,7 +338,7 @@ to be assembled together.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
 </tr>
 </tbody>
 </table>
@@ -368,7 +352,7 @@ to be assembled together.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
 </tr>
 </tbody>
 </table>
@@ -382,7 +366,7 @@ to be assembled together.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">None</span></code></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -394,26 +378,26 @@ to be assembled together.</p>
 <dd><p>Run feed-forward pass with the given batch using all the models, aggregate and return the results.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last"><a class="reference internal" href="#cxflow.models.Ensemble" title="cxflow.models.Ensemble"><code class="xref py py-class docutils literal"><span class="pre">Ensemble</span></code></a> can not be trained.</p>
+<p class="last"><a class="reference internal" href="#cxflow.models.Ensemble" title="cxflow.models.Ensemble"><code class="xref py py-class docutils literal notranslate"><span class="pre">Ensemble</span></code></a> can not be trained.</p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>batch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Any</span></code></a>]]) &#8211; batch to be processed</li>
-<li><strong>train</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">bool</span></code></a>) &#8211; <code class="docutils literal"><span class="pre">True</span></code> if this batch should be used for model update, <code class="docutils literal"><span class="pre">False</span></code> otherwise</li>
-<li><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.StreamWrapper" title="cxflow.datasets.StreamWrapper"><code class="xref py py-class docutils literal"><span class="pre">StreamWrapper</span></code></a>]) &#8211; stream wrapper (useful for precise buffer management)</li>
+<li><strong>batch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]]) – batch to be processed</li>
+<li><strong>train</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if this batch should be used for model update, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</li>
+<li><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.StreamWrapper" title="cxflow.datasets.StreamWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamWrapper</span></code></a>]) – stream wrapper (useful for precise buffer management)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Any</span></code></a>]]</p>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]]</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">aggregated results dict</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#ValueError" title="(in Python v3.6)"><strong>ValueError</strong></a> &#8211; if the <code class="docutils literal"><span class="pre">train</span></code> flag is set to <code class="docutils literal"><span class="pre">True</span></code></p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#ValueError" title="(in Python v3.6)"><strong>ValueError</strong></a> – if the <code class="docutils literal notranslate"><span class="pre">train</span></code> flag is set to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 </td>
 </tr>
 </tbody>
@@ -428,9 +412,9 @@ to be assembled together.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#NotImplementedError" title="(in Python v3.6)"><strong>NotImplementedError</strong></a> &#8211; when called</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#NotImplementedError" title="(in Python v3.6)"><strong>NotImplementedError</strong></a> – when called</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">None</span></code></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -441,7 +425,7 @@ to be assembled together.</p>
 <dl class="class">
 <dt id="cxflow.models.Sequence">
 <em class="property">class </em><code class="descclassname">cxflow.models.</code><code class="descname">Sequence</code><span class="sig-paren">(</span><em>model_paths</em>, <em>models_root=None</em>, <em>dataset=None</em>, <em>eager_loading=False</em>, <em>**_</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/sequence.html#Sequence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.Sequence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#cxflow.models.AbstractModel" title="cxflow.models.AbstractModel"><code class="xref py py-class docutils literal"><span class="pre">models.AbstractModel</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#cxflow.models.AbstractModel" title="cxflow.models.AbstractModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">models.AbstractModel</span></code></a></p>
 <p>Model sequence provides simple abstraction for sequential application of multiple models to input batches.
 All the models are fed with the original inputs as well as the outputs of the preceeding models.
 Ultimately, all the model outputs are returned.</p>
@@ -451,7 +435,7 @@ Ultimately, all the model outputs are returned.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id3">
 <div class="code-block-caption"><span class="caption-text">usage from config</span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">model</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MyPipeline</span>
   <span class="l l-Scalar l-Scalar-Plain">class</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cxflow.models.Sequence</span>
 
@@ -462,33 +446,30 @@ Ultimately, all the model outputs are returned.</p>
 </div>
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-text">usage from python</span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cxflow</span> <span class="kn">as</span> <span class="nn">cx</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cxflow</span> <span class="kn">as</span> <span class="nn">cx</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">cx</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">model_paths</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/path/to/step/step1&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/step/step2&#39;</span><span class="p">])</span>
 <span class="c1"># model.run(...)</span>
 </pre></div>
 </div>
 </div>
-<img src="../_images/inheritance-c0afb6b86799d85e038c08feecb0a58d21cf1ca9.png" alt="Inheritance diagram of Sequence" usemap="#inheritance073049eef1" class="inheritance"/>
-<map id="inheritance073049eef1" name="inheritance073049eef1">
-<area shape="rect" id="node2" title="Model sequence provides simple abstraction for sequential application of multiple models to input batches." alt="" coords="168,5,253,31"/>
-</map>
+<img src="../_images/inheritance-c0afb6b86799d85e038c08feecb0a58d21cf1ca9.png" alt="Inheritance diagram of Sequence" class="inheritance"/>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <dl class="method">
 <dt id="cxflow.models.Sequence.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><em>model_paths</em>, <em>models_root=None</em>, <em>dataset=None</em>, <em>eager_loading=False</em>, <em>**_</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/sequence.html#Sequence.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.Sequence.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create new model <code class="docutils literal"><span class="pre">Sequence</span></code>.</p>
+<dd><p>Create new model <code class="docutils literal notranslate"><span class="pre">Sequence</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>models_root</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]) &#8211; optional root directory of the models to be assembled together</li>
-<li><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]) &#8211; list of model directory names/paths</li>
-<li><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.AbstractDataset" title="cxflow.datasets.AbstractDataset"><code class="xref py py-class docutils literal"><span class="pre">AbstractDataset</span></code></a>]) &#8211; optional <strong>cxflow</strong> dataset (will be passed to the underlying models)</li>
-<li><strong>eager_loading</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">bool</span></code></a>) &#8211; load all the models in the constructor</li>
+<li><strong>models_root</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – optional root directory of the models to be assembled together</li>
+<li><strong>model_paths</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]) – list of model directory names/paths</li>
+<li><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.AbstractDataset" title="cxflow.datasets.AbstractDataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractDataset</span></code></a>]) – optional <strong>cxflow</strong> dataset (will be passed to the underlying models)</li>
+<li><strong>eager_loading</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – load all the models in the constructor</li>
 </ul>
 </td>
 </tr>
@@ -499,12 +480,12 @@ Ultimately, all the model outputs are returned.</p>
 <dl class="method">
 <dt id="cxflow.models.Sequence._load_models">
 <code class="descname">_load_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cxflow/models/sequence.html#Sequence._load_models"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#cxflow.models.Sequence._load_models" title="Permalink to this definition">¶</a></dt>
-<dd><p>Maybe load all the models to be applied and save them to the <code class="docutils literal"><span class="pre">self._models</span></code> attribute.</p>
+<dd><p>Maybe load all the models to be applied and save them to the <code class="docutils literal notranslate"><span class="pre">self._models</span></code> attribute.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">None</span></code></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -518,7 +499,7 @@ Ultimately, all the model outputs are returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
 </tr>
 </tbody>
 </table>
@@ -532,7 +513,7 @@ Ultimately, all the model outputs are returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>]</td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Iterable" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>]</td>
 </tr>
 </tbody>
 </table>
@@ -546,7 +527,7 @@ Ultimately, all the model outputs are returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">None</span></code></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -559,26 +540,26 @@ Ultimately, all the model outputs are returned.</p>
 <p>N-th model is fed with the original inputs and outputs of all the models that were run before it.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last"><a class="reference internal" href="#cxflow.models.Sequence" title="cxflow.models.Sequence"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a> model can not be trained.</p>
+<p class="last"><a class="reference internal" href="#cxflow.models.Sequence" title="cxflow.models.Sequence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a> model can not be trained.</p>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>batch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Any</span></code></a>]]) &#8211; batch to be processed</li>
-<li><strong>train</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">bool</span></code></a>) &#8211; <code class="docutils literal"><span class="pre">True</span></code> if this batch should be used for model update, <code class="docutils literal"><span class="pre">False</span></code> otherwise</li>
-<li><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.StreamWrapper" title="cxflow.datasets.StreamWrapper"><code class="xref py py-class docutils literal"><span class="pre">StreamWrapper</span></code></a>]) &#8211; stream wrapper (useful for precise buffer management)</li>
+<li><strong>batch</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]]) – batch to be processed</li>
+<li><strong>train</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/functions.html#bool" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code></a>) – <code class="docutils literal notranslate"><span class="pre">True</span></code> if this batch should be used for model update, <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise</li>
+<li><strong>stream</strong> (<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Optional" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code></a>[<a class="reference internal" href="cxflow.datasets.html#cxflow.datasets.StreamWrapper" title="cxflow.datasets.StreamWrapper"><code class="xref py py-class docutils literal notranslate"><span class="pre">StreamWrapper</span></code></a>]) – stream wrapper (useful for precise buffer management)</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal"><span class="pre">Any</span></code></a>]]</p>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Mapping" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Mapping</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/stdtypes.html#str" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Sequence" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3.6/library/typing.html#typing.Any" title="(in Python v3.6)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></a>]]</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">accumulated model outputs</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#ValueError" title="(in Python v3.6)"><strong>ValueError</strong></a> &#8211; if the <code class="docutils literal"><span class="pre">train</span></code> flag is set to <code class="docutils literal"><span class="pre">True</span></code></p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#ValueError" title="(in Python v3.6)"><strong>ValueError</strong></a> – if the <code class="docutils literal notranslate"><span class="pre">train</span></code> flag is set to <code class="docutils literal notranslate"><span class="pre">True</span></code></p>
 </td>
 </tr>
 </tbody>
@@ -593,9 +574,9 @@ Ultimately, all the model outputs are returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#NotImplementedError" title="(in Python v3.6)"><strong>NotImplementedError</strong></a> &#8211; when called</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><a class="reference external" href="https://docs.python.org/3.6/library/exceptions.html#NotImplementedError" title="(in Python v3.6)"><strong>NotImplementedError</strong></a> – when called</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal"><span class="pre">None</span></code></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -620,7 +601,7 @@ Ultimately, all the model outputs are returned.</p>
     </p>
     <p>
         &copy; Copyright 2017, Cognexa Solutions s.r.o..<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.9.<br/>
     </p>
   </div>
 </footer>
